@@ -10,6 +10,9 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.4"
+        "php": "^7.4",
+        "ext-json": "*",
+        "ext-xml": "*",
+        "ext-mbstring": "*"
     }
 }
