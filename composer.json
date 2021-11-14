@@ -8,6 +8,16 @@
             "email": "live.iqbal@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "LanguageGroup\\": "src/LanguageGroup/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "minimum-stability": "dev",
     "require": {
         "php": "^7.4",
