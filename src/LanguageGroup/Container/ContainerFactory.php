@@ -4,6 +4,7 @@ namespace LanguageGroup\Container;
 
 use LanguageGroup\Service\ConfigService;
 use LanguageGroup\Service\CurlService;
+use LanguageGroup\Service\LanguageGroupService;
 use LanguageGroup\Service\RestCountriesService;
 use Pimple\Container;
 
@@ -46,6 +47,12 @@ class ContainerFactory
             return new RestCountriesService(
                 $c['ConfigService'],
                 $c['CurlService']
+            );
+        };
+
+        $container['LanguageGroupService'] = function ($c) {
+            return new LanguageGroupService(
+                $c['RestCountriesService']
             );
         };
 
