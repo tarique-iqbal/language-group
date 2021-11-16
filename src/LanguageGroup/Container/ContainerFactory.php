@@ -6,6 +6,7 @@ use LanguageGroup\Service\ConfigService;
 use LanguageGroup\Service\CurlService;
 use LanguageGroup\Service\LanguageGroupService;
 use LanguageGroup\Service\RestCountriesService;
+use LanguageGroup\Service\TemplateService;
 use Pimple\Container;
 
 /**
@@ -54,6 +55,10 @@ class ContainerFactory
             return new LanguageGroupService(
                 $c['RestCountriesService']
             );
+        };
+
+        $container['TemplateService'] = function () {
+            return new TemplateService();
         };
 
         return $container;

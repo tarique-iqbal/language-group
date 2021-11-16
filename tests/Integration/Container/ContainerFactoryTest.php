@@ -7,6 +7,7 @@ use LanguageGroup\Service\ConfigService;
 use LanguageGroup\Service\CurlService;
 use LanguageGroup\Service\LanguageGroupService;
 use LanguageGroup\Service\RestCountriesService;
+use LanguageGroup\Service\TemplateService;
 use PHPUnit\Framework\TestCase;
 use Pimple\Container;
 
@@ -23,5 +24,6 @@ class ContainerFactoryTest extends TestCase
         $this->assertInstanceOf(CurlService::class, $container['CurlService']);
         $this->assertInstanceOf(RestCountriesService::class, $container['RestCountriesService']);
         $this->assertInstanceOf(LanguageGroupService::class, $container['LanguageGroupService']);
+        $this->assertInstanceOf(TemplateService::class, $container['TemplateService']);
     }
 }
