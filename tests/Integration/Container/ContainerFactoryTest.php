@@ -3,6 +3,7 @@
 namespace Tests\Integration\Container;
 
 use LanguageGroup\Container\ContainerFactory;
+use LanguageGroup\Handler\ExceptionHandler;
 use LanguageGroup\LanguageGroupApplication;
 use LanguageGroup\Service\CliArgsService;
 use LanguageGroup\Service\ConfigService;
@@ -29,5 +30,6 @@ class ContainerFactoryTest extends TestCase
         $this->assertInstanceOf(TemplateService::class, $container['TemplateService']);
         $this->assertInstanceOf(CliArgsService::class, $container['CliArgsService']);
         $this->assertInstanceOf(LanguageGroupApplication::class, $container['LanguageGroupApplication']);
+        $this->assertInstanceOf(ExceptionHandler::class, $container['ExceptionHandler']);
     }
 }

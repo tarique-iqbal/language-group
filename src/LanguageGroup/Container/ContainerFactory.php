@@ -2,6 +2,7 @@
 
 namespace LanguageGroup\Container;
 
+use LanguageGroup\Handler\ExceptionHandler;
 use LanguageGroup\LanguageGroupApplication;
 use LanguageGroup\Service\CliArgsService;
 use LanguageGroup\Service\ConfigService;
@@ -72,6 +73,12 @@ class ContainerFactory
                 $c['CliArgsService'],
                 $c['LanguageGroupService'],
                 $c['TemplateService']
+            );
+        };
+
+        $container['ExceptionHandler'] = function ($c) {
+            return new ExceptionHandler(
+                $c['ConfigService']
             );
         };
 
