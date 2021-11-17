@@ -2,6 +2,7 @@
 
 namespace LanguageGroup\Container;
 
+use LanguageGroup\LanguageGroupApplication;
 use LanguageGroup\Service\CliArgsService;
 use LanguageGroup\Service\ConfigService;
 use LanguageGroup\Service\CurlService;
@@ -64,6 +65,14 @@ class ContainerFactory
 
         $container['CliArgsService'] = function () {
             return new CliArgsService();
+        };
+
+        $container['LanguageGroupApplication'] = function ($c) {
+            return new LanguageGroupApplication(
+                $c['CliArgsService'],
+                $c['LanguageGroupService'],
+                $c['TemplateService']
+            );
         };
 
         return $container;
