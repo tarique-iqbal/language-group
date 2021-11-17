@@ -38,4 +38,14 @@ class ConfigServiceTest extends TestCase
 
         $this->assertSame($expectedApiUrl, $apiUrl);
     }
+
+    public function testGetErrorLogFile(): void
+    {
+        $logFile = $this->configService->getErrorLogFile();
+        $expectedLogFile = BASE_DIR
+            . '/' . $this->config['error_log']['directory']
+            . '/' . $this->config['error_log']['file_name'];
+
+        $this->assertSame($expectedLogFile, $logFile);
+    }
 }

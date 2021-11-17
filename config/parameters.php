@@ -6,6 +6,10 @@ $config = [
             => 'https://restcountries.com/v2/name/{name}?fullText=true&fields=languages;name',
         'search_by_language_code' => 'https://restcountries.com/v2/lang/{code}?fields=name'
     ],
+    'error_log' => [
+        'directory' => 'var/logs',
+        'file_name' => 'errors.log'
+    ],
 ];
 
 return $config;

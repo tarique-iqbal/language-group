@@ -43,4 +43,14 @@ class ConfigService implements ConfigServiceInterface
 
         return str_replace('{code}', $languageCode, $apiUrl);
     }
+
+    /**
+     * @return string
+     */
+    public function getErrorLogFile(): string
+    {
+        return BASE_DIR
+            . '/' . $this->config['error_log']['directory']
+            . '/' . $this->config['error_log']['file_name'];
+    }
 }

@@ -19,4 +19,9 @@ interface ConfigServiceInterface
      * @return string
      */
     public function getApiUrlSearchByLanguageCode(string $languageCode): string;
+
+    /**
+     * @return string
+     */
+    public function getErrorLogFile(): string;
 }
