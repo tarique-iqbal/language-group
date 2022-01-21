@@ -47,14 +47,14 @@ class ContainerFactory
             return new CurlService();
         };
 
-        $container['RestCountriesService'] = function ($c) {
+        $container['RestCountriesService'] = function (Container $c) {
             return new RestCountriesService(
                 $c['ConfigService'],
                 $c['CurlService']
             );
         };
 
-        $container['LanguageGroupService'] = function ($c) {
+        $container['LanguageGroupService'] = function (Container $c) {
             return new LanguageGroupService(
                 $c['RestCountriesService']
             );
@@ -68,7 +68,7 @@ class ContainerFactory
             return new CliArgsService();
         };
 
-        $container['LanguageGroupApplication'] = function ($c) {
+        $container['LanguageGroupApplication'] = function (Container $c) {
             return new LanguageGroupApplication(
                 $c['CliArgsService'],
                 $c['LanguageGroupService'],
@@ -76,7 +76,7 @@ class ContainerFactory
             );
         };
 
-        $container['ExceptionHandler'] = function ($c) {
+        $container['ExceptionHandler'] = function (Container $c) {
             return new ExceptionHandler(
                 $c['ConfigService']
             );
