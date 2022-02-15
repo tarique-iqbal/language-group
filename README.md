@@ -14,6 +14,10 @@ The application will now work if [register_argc_argv](http://php.net/manual/en/i
 ## Installation and Run the script
 
 - All the `code` required to get started
+- Clone this repo to your local machine using
+```shell
+$ git clone https://github.com/tarique-iqbal/language-group.git
+```
 
 - Need write permission to following `directory`
 
@@ -58,7 +62,7 @@ Canada and France speak the same language.
 
 ## Running the tests
 
-- Follow the Install instructions.
+- Follow Install instructions.
 
 Adapt `phpunit.xml.dist` PHP Constant according to your setup environment.
 
