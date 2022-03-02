@@ -7,7 +7,7 @@ ini_set('display_errors', 'Off');
 
 const BASE_DIR = __DIR__;
 
-if (php_sapi_name() !== 'cli') {
+if (PHP_SAPI !== 'cli') {
     die('Please run the application from command line.');
 }
 
