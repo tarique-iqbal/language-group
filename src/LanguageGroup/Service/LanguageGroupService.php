@@ -27,7 +27,7 @@ class LanguageGroupService implements LanguageGroupServiceInterface
 
     /**
      * @param string $countryName
-     * @return array
+     * @return LanguageGroup[]
      */
     public function getResultForCountry(string $countryName): array
     {
