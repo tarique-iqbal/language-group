@@ -5,7 +5,7 @@ A small command-line utility that will list all the countries which speaks the s
 
 ```
 composer
-php (>=7.4)
+php (>=8.2)
 ```
 
 ## Note
