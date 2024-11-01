@@ -4,13 +4,15 @@ namespace Tests\Integration\Service;
 
 use LanguageGroup\Container\ContainerFactory;
 use LanguageGroup\Service\CurlServiceInterface;
+use LanguageGroup\Service\RestCountriesServiceInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class RestCountriesServiceTest extends TestCase
 {
-    protected $curlService;
+    protected CurlServiceInterface $curlService;
 
-    protected $restCountriesService;
+    protected RestCountriesServiceInterface $restCountriesService;
 
     protected function setUp(): void
     {
@@ -39,7 +41,7 @@ class RestCountriesServiceTest extends TestCase
         $this->assertContainsOnlyInstancesOf(\stdClass::class, $country);
     }
 
-    public function addUnexpectedResponseProvider(): array
+    public static function addUnexpectedResponseProvider(): array
     {
         return [
             [json_encode('')],
@@ -50,9 +52,7 @@ class RestCountriesServiceTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider addUnexpectedResponseProvider
-     */
+    #[DataProvider('addUnexpectedResponseProvider')]
     public function testSearchByCountryFullNameInvalidResponseFromCurlService(string $response): void
     {
         $this->expectException(\UnexpectedValueException::class);
@@ -79,9 +79,7 @@ class RestCountriesServiceTest extends TestCase
         $this->assertContainsOnlyInstancesOf(\stdClass::class, $languageSpeakCountries);
     }
 
-    /**
-     * @dataProvider addUnexpectedResponseProvider
-     */
+    #[DataProvider('addUnexpectedResponseProvider')]
     public function testSearchByLanguageCodeInvalidResponseFromCurlService(string $response): void
     {
         $this->expectException(\UnexpectedValueException::class);

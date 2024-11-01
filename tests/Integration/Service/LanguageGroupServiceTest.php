@@ -5,13 +5,14 @@ namespace Tests\Integration\Service;
 use LanguageGroup\Container\ContainerFactory;
 use LanguageGroup\Entity\LanguageGroup;
 use LanguageGroup\Service\CurlServiceInterface;
+use LanguageGroup\Service\LanguageGroupServiceInterface;
 use PHPUnit\Framework\TestCase;
 
 class LanguageGroupServiceTest extends TestCase
 {
-    protected $curlService;
+    protected CurlServiceInterface $curlService;
 
-    protected $languageGroupService;
+    protected LanguageGroupServiceInterface $languageGroupService;
 
     protected function setUp(): void
     {
@@ -30,10 +31,10 @@ class LanguageGroupServiceTest extends TestCase
         $this->curlService
             ->expects($this->any())
             ->method('get')
-            ->will($this->onConsecutiveCalls(
+            ->willReturn(
                 '[{"languages":[{"iso639_1":"it"}],"name":"Italy"}]',
                 '[{"name":"Holy See"},{"name":"Italy"},{"name":"San Marino"},{"name":"Switzerland"}]'
-            ));
+            );
 
         $languageGroups = $this->languageGroupService->getResultForCountry('Italy');
 
@@ -46,12 +47,10 @@ class LanguageGroupServiceTest extends TestCase
         $this->curlService
             ->expects($this->any())
             ->method('get')
-            ->will($this->onConsecutiveCalls(
+            ->willReturn(
                 '[{"languages":[{"iso639_1":"de"},{"iso639_1":"fr"},{"iso639_1":"it"}],"name":"Switzerland"}]',
-
                 '[{"name":"Austria"},{"name":"Belgium"},{"name":"Germany"},{"name":"Holy See"},'
                 . '{"name":"Liechtenstein"},{"name":"Luxembourg"},{"name":"Switzerland"}]',
-
                 '[{"name":"Belgium"},{"name":"Benin"},{"name":"Burkina Faso"},{"name":"Burundi"},{"name":"Cameroon"},'
                 . '{"name":"Canada"},{"name":"Central African Republic"},{"name":"Chad"},{"name":"Comoros"},'
                 . '{"name":"Congo"},{"name":"Congo (Democratic Republic of the)"},{"name":"Djibouti"},'
@@ -64,9 +63,8 @@ class LanguageGroupServiceTest extends TestCase
                 . '{"name":"Saint Martin (French part)"},{"name":"Saint Pierre and Miquelon"},{"name":"Senegal"},'
                 . '{"name":"Seychelles"},{"name":"Switzerland"},{"name":"Togo"},{"name":"Vanuatu"},'
                 . '{"name":"Wallis and Futuna"}]',
-
                 '[{"name":"Holy See"},{"name":"Italy"},{"name":"San Marino"},{"name":"Switzerland"}]'
-            ));
+            );
 
         $languageGroups = $this->languageGroupService->getResultForCountry('Switzerland');
 

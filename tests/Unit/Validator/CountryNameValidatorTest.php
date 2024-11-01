@@ -3,11 +3,12 @@
 namespace Tests\Unit\Validator;
 
 use LanguageGroup\Validator\CountryNameValidator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class CountryNameValidatorTest extends TestCase
 {
-    public function addCountryNameDataProvider(): array
+    public static function addCountryNameDataProvider(): array
     {
         return [
             [
@@ -25,9 +26,7 @@ class CountryNameValidatorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider addCountryNameDataProvider
-     */
+    #[DataProvider('addCountryNameDataProvider')]
     public function testIsValid(string $countryName, bool $expectedStatus): void
     {
         $countryNameValidator = new CountryNameValidator();

@@ -3,11 +3,12 @@
 namespace Tests\Unit\Validator;
 
 use LanguageGroup\Validator\ArraySizeValidator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ArraySizeValidatorTest extends TestCase
 {
-    public function addArraySizeDataProvider(): array
+    public static function addArraySizeDataProvider(): array
     {
         return [
             [
@@ -31,9 +32,7 @@ class ArraySizeValidatorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider addArraySizeDataProvider
-     */
+    #[DataProvider('addArraySizeDataProvider')]
     public function testIsValid(array $array, int $minSize, int $maxSize, bool $expectedStatus): void
     {
         $arraySizeValidator = new ArraySizeValidator();

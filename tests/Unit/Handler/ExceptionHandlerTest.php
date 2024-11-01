@@ -11,12 +11,12 @@ class ExceptionHandlerTest extends TestCase
 {
     public function testReport(): void
     {
-        $this->setOutputCallback(function () {
-        });
+        $this->expectOutputString(
+            sprintf('Exception occurred! Please check errors log file.%s', PHP_EOL)
+        );
 
         $structure = [
             'logs' => [
-
             ]
         ];
         $root = vfsStream::setup(sys_get_temp_dir(), null, $structure);

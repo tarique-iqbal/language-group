@@ -3,17 +3,19 @@
 namespace Tests\Integration;
 
 use LanguageGroup\Container\ContainerFactory;
+use LanguageGroup\LanguageGroupApplication;
 use LanguageGroup\Service\CliArgsServiceInterface;
 use LanguageGroup\Service\CurlServiceInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class LanguageGroupApplicationTest extends TestCase
 {
-    protected $curlService;
+    protected CurlServiceInterface $curlService;
 
-    protected $cliArgsService;
+    protected CliArgsServiceInterface $cliArgsService;
 
-    protected $languageGroupApplication;
+    protected LanguageGroupApplication $languageGroupApplication;
 
     protected function setUp(): void
     {
@@ -39,10 +41,10 @@ class LanguageGroupApplicationTest extends TestCase
         $this->curlService
             ->expects($this->any())
             ->method('get')
-            ->will($this->onConsecutiveCalls(
+            ->willReturn(
                 '[{"languages":[{"iso639_1":"it"}],"name":"Italy"}]',
                 '[{"name":"Holy See"},{"name":"Italy"},{"name":"San Marino"},{"name":"Switzerland"}]'
-            ));
+            );
 
         $this->expectOutputString(
             'Country language code: it' . PHP_EOL
@@ -60,7 +62,7 @@ class LanguageGroupApplicationTest extends TestCase
         $this->curlService
             ->expects($this->any())
             ->method('get')
-            ->will($this->onConsecutiveCalls(
+            ->willReturn(
                 '[{"languages":[{"iso639_1":"de"},{"iso639_1":"fr"},{"iso639_1":"it"}],"name":"Switzerland"}]',
                 '[{"name":"Austria"},{"name":"Belgium"},{"name":"Germany"},{"name":"Holy See"},'
                 . '{"name":"Liechtenstein"},{"name":"Luxembourg"},{"name":"Switzerland"}]',
@@ -77,7 +79,7 @@ class LanguageGroupApplicationTest extends TestCase
                 . '{"name":"Seychelles"},{"name":"Switzerland"},{"name":"Togo"},{"name":"Vanuatu"},'
                 . '{"name":"Wallis and Futuna"}]',
                 '[{"name":"Holy See"},{"name":"Italy"},{"name":"San Marino"},{"name":"Switzerland"}]'
-            ));
+            );
 
         $this->expectOutputString(
             'Country language code: de' . PHP_EOL
@@ -100,7 +102,7 @@ class LanguageGroupApplicationTest extends TestCase
         $this->languageGroupApplication->speak();
     }
 
-    public function addInvalidInputProvider(): array
+    public static function addInvalidInputProvider(): array
     {
         return [
             [
@@ -122,9 +124,7 @@ class LanguageGroupApplicationTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider addInvalidInputProvider
-     */
+    #[DataProvider('addInvalidInputProvider')]
     public function testSpeakWithInvalidInput(array $invalidInputArgs, string $expectOutputString): void
     {
         $this->cliArgsService

@@ -3,13 +3,14 @@
 namespace Tests\Unit\Service;
 
 use LanguageGroup\Service\CliArgsService;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class CliArgsServiceTest extends TestCase
 {
     private const FILE = 'index.php';
 
-    public function addCliArgsDataProvider(): array
+    public static function addCliArgsDataProvider(): array
     {
         return [
             [
@@ -24,9 +25,7 @@ class CliArgsServiceTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider addCliArgsDataProvider
-     */
+    #[DataProvider('addCliArgsDataProvider')]
     public function testGetArgs(array $arguments, int $countExpected, array $resultExpected): void
     {
         $_SERVER['argv'] = $arguments;
