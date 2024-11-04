@@ -4,23 +4,12 @@ namespace LanguageGroup\Handler;
 
 use LanguageGroup\Service\ConfigServiceInterface;
 
-/**
- * Class ExceptionHandler
- * @package LanguageGroup\Handler
- */
 final readonly class ExceptionHandler
 {
-    /**
-     * ExceptionHandler constructor.
-     * @param ConfigServiceInterface $configService
-     */
     public function __construct(private ConfigServiceInterface $configService)
     {
     }
 
-    /**
-     * @param \Throwable $e
-     */
     public function report(\Throwable $e): void
     {
         $message = $e->getMessage();

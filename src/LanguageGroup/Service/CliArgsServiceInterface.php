@@ -2,14 +2,7 @@
 
 namespace LanguageGroup\Service;
 
-/**
- * Interface CLIArgsServiceInterface
- * @package LanguageGroup\Service
- */
 interface CliArgsServiceInterface
 {
-    /**
-     * @return array
-     */
     public function getArgs(): array;
 }

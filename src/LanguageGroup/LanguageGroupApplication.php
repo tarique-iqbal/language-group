@@ -9,22 +9,12 @@ use LanguageGroup\Service\TemplateServiceInterface;
 use LanguageGroup\Validator\ArraySizeValidator;
 use LanguageGroup\Validator\CountryNameValidator;
 
-/**
- * Class RestCountriesService
- * @package LanguageGroup\Service
- */
 final readonly class LanguageGroupApplication
 {
     private const MINIMUM_INPUT_SIZE = 1;
 
     private const MAXIMUM_INPUT_SIZE = 2;
 
-    /**
-     * LanguageGroupApplication constructor.
-     * @param CliArgsServiceInterface $cliArgsService
-     * @param LanguageGroupServiceInterface $languageGroupService
-     * @param TemplateServiceInterface $templateService
-     */
     public function __construct(
         private CliArgsServiceInterface $cliArgsService,
         private LanguageGroupServiceInterface $languageGroupService,
@@ -54,8 +44,6 @@ final readonly class LanguageGroupApplication
     }
 
     /**
-     * @param array $countries
-     * @return bool
      * @throws FileNotFoundException
      */
     private function validateInput(array $countries): bool
@@ -84,7 +72,6 @@ final readonly class LanguageGroupApplication
     }
 
     /**
-     * @param string $message
      * @throws FileNotFoundException
      */
     private function displayErrorMessage(string $message): void

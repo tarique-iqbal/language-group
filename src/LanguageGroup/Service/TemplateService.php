@@ -4,15 +4,9 @@ namespace LanguageGroup\Service;
 
 use LanguageGroup\Exception\FileNotFoundException;
 
-/**
- * Class TemplateService
- * @package LanguageGroup\Service
- */
 class TemplateService implements TemplateServiceInterface
 {
     /**
-     * @param string $file
-     * @param array $data
      * @throws FileNotFoundException
      */
     public function render(string $file, array $data): void

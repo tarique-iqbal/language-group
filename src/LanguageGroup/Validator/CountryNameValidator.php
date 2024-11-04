@@ -2,21 +2,10 @@
 
 namespace LanguageGroup\Validator;
 
-/**
- * Class CountryNameValidator
- * @package LanguageGroup\Validator
- */
 class CountryNameValidator
 {
-    /**
-     * @var string
-     */
     private string $errorMessage;
 
-    /**
-     * @param string $countryName
-     * @return bool
-     */
     public function isValid(string $countryName): bool
     {
         if (!preg_match('/^[a-zA-Z\Å\ô\é\ \-\(\),\.\']+$/', $countryName)) {
@@ -29,9 +18,6 @@ class CountryNameValidator
         return true;
     }
 
-    /**
-     * @return string
-     */
     public function getErrorMessage(): string
     {
         return $this->errorMessage;

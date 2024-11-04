@@ -2,15 +2,8 @@
 
 namespace LanguageGroup\Service;
 
-/**
- * Class CLIArgsService
- * @package LanguageGroup\Service
- */
 final class CliArgsService implements CliArgsServiceInterface
 {
-    /**
-     * @return array
-     */
     public function getArgs(): array
     {
         $argv = $_SERVER['argv'];

@@ -5,22 +5,13 @@ namespace LanguageGroup\Service;
 use LanguageGroup\Entity\Country;
 use LanguageGroup\Entity\LanguageGroup;
 
-/**
- * Class LanguageGroupService
- * @package LanguageGroup\Service
- */
 final readonly class LanguageGroupService implements LanguageGroupServiceInterface
 {
-    /**
-     * LanguageService constructor.
-     * @param RestCountriesServiceInterface $restCountriesService
-     */
     public function __construct(private RestCountriesServiceInterface $restCountriesService)
     {
     }
 
     /**
-     * @param string $countryName
      * @return LanguageGroup[]
      */
     public function getResultForCountry(string $countryName): array

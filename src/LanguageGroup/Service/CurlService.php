@@ -2,20 +2,10 @@
 
 namespace LanguageGroup\Service;
 
-/**
- * Class CurlService
- * @package LanguageGroup\Service
- */
 class CurlService implements CurlServiceInterface
 {
-    /**
-     * @var \CurlHandle|false
-     */
     private \CurlHandle|false $ch;
 
-    /**
-     * @param array $headers
-     */
     private function init(array $headers): void
     {
         $this->ch = curl_init();
@@ -29,9 +19,6 @@ class CurlService implements CurlServiceInterface
     }
 
     /**
-     * @param string $url
-     * @param array $headers
-     * @return string
      * @throws \UnexpectedValueException
      */
     public function get(string $url, array $headers): string

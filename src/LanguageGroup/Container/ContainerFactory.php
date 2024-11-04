@@ -12,23 +12,12 @@ use LanguageGroup\Service\RestCountriesService;
 use LanguageGroup\Service\TemplateService;
 use Pimple\Container;
 
-/**
- * Class ContainerFactory
- * @package LanguageGroup\Container
- */
 readonly class ContainerFactory
 {
-    /**
-     * ContainerFactory constructor.
-     * @param array $config
-     */
     public function __construct(private array $config)
     {
     }
 
-    /**
-     * @return Container
-     */
     public function create(): Container
     {
         $container = new Container();

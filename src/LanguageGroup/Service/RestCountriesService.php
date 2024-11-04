@@ -2,22 +2,10 @@
 
 namespace LanguageGroup\Service;
 
-/**
- * Class RestCountriesService
- * @package LanguageGroup\Service
- */
 final class RestCountriesService implements RestCountriesServiceInterface
 {
-    /**
-     * @var array
-     */
     private array $headers;
 
-    /**
-     * RestCountriesService constructor.
-     * @param ConfigServiceInterface $configService
-     * @param CurlServiceInterface $curlService
-     */
     public function __construct(
         private readonly ConfigServiceInterface $configService,
         private readonly CurlServiceInterface $curlService,
@@ -28,8 +16,6 @@ final class RestCountriesService implements RestCountriesServiceInterface
     }
 
     /**
-     * @param string $countryName
-     * @return array
      * @throws \UnexpectedValueException
      */
     public function searchByCountryFullName(string $countryName): array
@@ -49,8 +35,6 @@ final class RestCountriesService implements RestCountriesServiceInterface
     }
 
     /**
-     * @param string $languageCode
-     * @return array
      * @throws \UnexpectedValueException
      */
     public function searchByLanguageCode(string $languageCode): array
