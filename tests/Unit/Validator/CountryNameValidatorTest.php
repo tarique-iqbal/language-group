@@ -27,10 +27,10 @@ class CountryNameValidatorTest extends TestCase
     }
 
     #[DataProvider('addCountryNameDataProvider')]
-    public function testIsValid(string $countryName, bool $expectedStatus): void
+    public function testValidate(string $countryName, bool $expectedStatus): void
     {
-        $countryNameValidator = new CountryNameValidator();
-        $status = $countryNameValidator->isValid($countryName);
+        $countryNameValidator = new CountryNameValidator($countryName);
+        $status = $countryNameValidator->validate();
 
         $this->assertSame($expectedStatus, $status);
     }
