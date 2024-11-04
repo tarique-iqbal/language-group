@@ -2,6 +2,7 @@
 
 namespace LanguageGroup\Handler;
 
+use LanguageGroup\Exception\ValidationFailedException;
 use LanguageGroup\Service\ConfigServiceInterface;
 
 final readonly class ExceptionHandler
@@ -10,13 +11,16 @@ final readonly class ExceptionHandler
     {
     }
 
-    public function report(\Throwable $e): void
+    public function report(\Throwable $exception): void
     {
-        $message = $e->getMessage();
-        $logFile = $this->configService->getErrorLogFile();
+        $message = $exception->getMessage();
 
-        error_log($message . PHP_EOL, 3, $logFile);
-
-        echo 'Exception occurred! Please check errors log file.' . PHP_EOL;
+        if ($exception instanceof ValidationFailedException) {
+            echo $message . PHP_EOL;
+        } else {
+            $logFile = $this->configService->getErrorLogFile();
+            error_log($message . PHP_EOL, 3, $logFile);
+            echo sprintf('Exception occurred! Please check errors log file: %s%s', $logFile, PHP_EOL);
+        }
     }
 }

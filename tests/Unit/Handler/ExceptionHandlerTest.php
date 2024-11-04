@@ -12,7 +12,7 @@ class ExceptionHandlerTest extends TestCase
     public function testReport(): void
     {
         $this->expectOutputString(
-            sprintf('Exception occurred! Please check errors log file.%s', PHP_EOL)
+            'Exception occurred! Please check errors log file: vfs://tmp/logs/errors.log' . PHP_EOL
         );
 
         $structure = [
