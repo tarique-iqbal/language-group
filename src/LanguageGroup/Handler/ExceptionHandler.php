@@ -8,20 +8,14 @@ use LanguageGroup\Service\ConfigServiceInterface;
  * Class ExceptionHandler
  * @package LanguageGroup\Handler
  */
-class ExceptionHandler
+final readonly class ExceptionHandler
 {
-    /**
-     * @var ConfigServiceInterface
-     */
-    private ConfigServiceInterface $configService;
-
     /**
      * ExceptionHandler constructor.
      * @param ConfigServiceInterface $configService
      */
-    public function __construct(ConfigServiceInterface $configService)
+    public function __construct(private ConfigServiceInterface $configService)
     {
-        $this->configService = $configService;
     }
 
     /**

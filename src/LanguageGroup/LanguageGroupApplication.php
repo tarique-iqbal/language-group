@@ -13,26 +13,11 @@ use LanguageGroup\Validator\CountryNameValidator;
  * Class RestCountriesService
  * @package LanguageGroup\Service
  */
-class LanguageGroupApplication
+final readonly class LanguageGroupApplication
 {
     private const MINIMUM_INPUT_SIZE = 1;
 
     private const MAXIMUM_INPUT_SIZE = 2;
-
-    /**
-     * @var CliArgsServiceInterface
-     */
-    private CliArgsServiceInterface $cliArgsService;
-
-    /**
-     * @var LanguageGroupServiceInterface
-     */
-    private LanguageGroupServiceInterface $languageGroupService;
-
-    /**
-     * @var TemplateServiceInterface
-     */
-    private TemplateServiceInterface $templateService;
 
     /**
      * LanguageGroupApplication constructor.
@@ -41,13 +26,10 @@ class LanguageGroupApplication
      * @param TemplateServiceInterface $templateService
      */
     public function __construct(
-        CliArgsServiceInterface $cliArgsService,
-        LanguageGroupServiceInterface $languageGroupService,
-        TemplateServiceInterface $templateService
+        private CliArgsServiceInterface $cliArgsService,
+        private LanguageGroupServiceInterface $languageGroupService,
+        private TemplateServiceInterface $templateService,
     ) {
-        $this->cliArgsService = $cliArgsService;
-        $this->languageGroupService = $languageGroupService;
-        $this->templateService = $templateService;
     }
 
     /**

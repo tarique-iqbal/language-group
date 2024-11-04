@@ -16,20 +16,14 @@ use Pimple\Container;
  * Class ContainerFactory
  * @package LanguageGroup\Container
  */
-class ContainerFactory
+readonly class ContainerFactory
 {
-    /**
-     * @var array
-     */
-    private array $config;
-
     /**
      * ContainerFactory constructor.
      * @param array $config
      */
-    public function __construct(array $config)
+    public function __construct(private array $config)
     {
-        $this->config = $config;
     }
 
     /**

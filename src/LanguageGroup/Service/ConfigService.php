@@ -6,20 +6,14 @@ namespace LanguageGroup\Service;
  * Class ConfigService
  * @package LanguageGroup\Service
  */
-class ConfigService implements ConfigServiceInterface
+final readonly class ConfigService implements ConfigServiceInterface
 {
-    /**
-     * @var array
-     */
-    private array $config = [];
-
     /**
      * ConfigService constructor.
      * @param array $config
      */
-    public function __construct(array $config)
+    public function __construct(private array $config)
     {
-        $this->config = $config;
     }
 
     /**

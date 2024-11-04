@@ -6,7 +6,7 @@ namespace LanguageGroup\Service;
  * Class RestCountriesService
  * @package LanguageGroup\Service
  */
-class RestCountriesService implements RestCountriesServiceInterface
+final class RestCountriesService implements RestCountriesServiceInterface
 {
     /**
      * @var array
@@ -14,28 +14,17 @@ class RestCountriesService implements RestCountriesServiceInterface
     private array $headers;
 
     /**
-     * @var ConfigServiceInterface
-     */
-    private ConfigServiceInterface $configService;
-
-    /**
-     * @var CurlServiceInterface
-     */
-    private CurlServiceInterface $curlService;
-
-    /**
      * RestCountriesService constructor.
      * @param ConfigServiceInterface $configService
      * @param CurlServiceInterface $curlService
      */
-    public function __construct(ConfigServiceInterface $configService, CurlServiceInterface $curlService)
-    {
+    public function __construct(
+        private readonly ConfigServiceInterface $configService,
+        private readonly CurlServiceInterface $curlService,
+    ) {
         $this->headers = [
             'Content-Type: application/json; charset=utf-8'
         ];
-
-        $this->configService = $configService;
-        $this->curlService = $curlService;
     }
 
     /**

@@ -6,7 +6,7 @@ namespace LanguageGroup\Service;
  * Class CLIArgsService
  * @package LanguageGroup\Service
  */
-class CliArgsService implements CliArgsServiceInterface
+final class CliArgsService implements CliArgsServiceInterface
 {
     /**
      * @return array

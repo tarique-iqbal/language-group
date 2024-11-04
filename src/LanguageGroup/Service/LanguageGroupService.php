@@ -9,20 +9,14 @@ use LanguageGroup\Entity\LanguageGroup;
  * Class LanguageGroupService
  * @package LanguageGroup\Service
  */
-class LanguageGroupService implements LanguageGroupServiceInterface
+final readonly class LanguageGroupService implements LanguageGroupServiceInterface
 {
-    /**
-     * @var RestCountriesServiceInterface
-     */
-    private RestCountriesServiceInterface $restCountriesService;
-
     /**
      * LanguageService constructor.
      * @param RestCountriesServiceInterface $restCountriesService
      */
-    public function __construct(RestCountriesServiceInterface $restCountriesService)
+    public function __construct(private RestCountriesServiceInterface $restCountriesService)
     {
-        $this->restCountriesService = $restCountriesService;
     }
 
     /**
