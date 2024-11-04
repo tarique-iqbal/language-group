@@ -2,7 +2,9 @@
 
 namespace Tests\Integration;
 
+use Cassandra\Exception\ValidationException;
 use LanguageGroup\Container\ContainerFactory;
+use LanguageGroup\Exception\ValidationFailedException;
 use LanguageGroup\LanguageGroupApplication;
 use LanguageGroup\Service\CliArgsServiceInterface;
 use LanguageGroup\Service\CurlServiceInterface;
@@ -107,31 +109,27 @@ class LanguageGroupApplicationTest extends TestCase
         return [
             [
                 [],
-                'Invalid input length.' . PHP_EOL
             ],
             [
                 ['Italy', 'San Marino', 'Switzerland'],
-                'Invalid input length.' . PHP_EOL
             ],
             [
                 ['Italy', '#$& Invalid Country Name'],
-                'Country name can contain alphabets, special characters [Åôé()-,.\'] and space only.' . PHP_EOL
             ],
             [
                 ['@#Invalid9Country&Name'],
-                'Country name can contain alphabets, special characters [Åôé()-,.\'] and space only.' . PHP_EOL
             ],
         ];
     }
 
     #[DataProvider('addInvalidInputProvider')]
-    public function testSpeakWithInvalidInput(array $invalidInputArgs, string $expectOutputString): void
+    public function testSpeakWithInvalidInput(array $invalidInputArgs): void
     {
+        $this->expectException(ValidationFailedException::class);
+
         $this->cliArgsService
             ->method('getArgs')
             ->willReturn($invalidInputArgs);
-
-        $this->expectOutputString($expectOutputString);
 
         $this->languageGroupApplication->speak();
     }
